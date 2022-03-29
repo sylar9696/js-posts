@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Stile css personale -->
+  <link rel="stylesheet" href="./style.css">
+  <title>JS Posts</title>
+</head>
+<body>
+
+  <main class="container">
+    <h2>Social Posts</h2>
+    <!-- Cards -->
+    <div id="containerCards">
+
+      <!-- Singola card -->
+      <div class="card">
+        <!-- Sezione d'intestazione della card -->
+        <div class="card-header">
+          <!-- Immagine avatar dell'autore -->
+          <img src="https://unsplash.it/300/300?image=48" class="card-header__img" alt="immagine autore">
+          <!-- Info dell'autore nome, data di creazione del post -->
+          <div class="card-header__autoreInfo">
+            <h4>Gennaro Esposito</h4>
+            <span>06-12-2021</span>
+          </div>
+        </div>
+        <!-- Sezione contenuto del post -->
+        <p class="card-body__content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cupiditate consequatur laudantium. Asperiores ducimus fuga quam blanditiis laborum sunt sint sapiente maxime minus iste tempora, nihil natus aspernatur ipsam tenetur!
+        </p>
+        <!-- Immagine del post -->
+        <img src="https://unsplash.it/600/200?image=29" class="card-body__full" alt="immagine di sfondo post">
+        <!-- Sezione mi piace -->
+        <div class="card-footer">
+          <button class="btn">
+            <i class="fa-solid fa-thumbs-up"></i>
+            Mi piace
+          </button>
+          <p>Piace a <span>80</span> persone</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="./main.js"></script>
+</body>
+</html>
