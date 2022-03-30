@@ -16,7 +16,9 @@ Per le immagini va bene utilizzare qualsiasi servizio di placeholder ad es. Unsp
 */
 
 //Impostiamo un array di oggetti:
-let array = [{
+let array = [
+  // 0
+  {
     'id': 1,
     'autore': {
       'nome': 'Gennaro Esposito',
@@ -27,6 +29,7 @@ let array = [{
     'media': 'https://unsplash.it/600/400?image=15',
     'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper, lacus sit amet rutrum imperdiet, metus ante lacinia neque, et tincidunt ante odio eu massa. Etiam nisi odio, vulputate sed interdum eget, egestas ac augue. '
   },
+  // 1
   {
     'id': 2,
     'autore': {
@@ -115,11 +118,11 @@ array.forEach(
         </p>
         <img src="${ element.media }" class="card-body__full" alt="immagine di sfondo post">
         <div class="card-footer">
-          <button class="btn">
+          <button class="btn js-like-button" data-id="${ element.id }">
             <i class="fa-solid fa-thumbs-up"></i>
             Mi piace
           </button>
-          <p>Piace a <span>${ element.likes }</span> persone</p>
+          <p>Piace a <span class='js-like-counter'>${ element.likes }</span> persone</p>
         </div>
       </div>
     `
@@ -190,6 +193,46 @@ function trasformazioneData(element){
 /*
 Milestone 3 - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
-
-Bonus 3: Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
 */
+
+const likeButtons = document.querySelectorAll(".js-like-button");
+const likeCounters = document.querySelectorAll(".js-like-counter");
+
+              //   0  1  2  3  4  5
+let likedPost = [];
+
+likeButtons.forEach(
+  (element, index) => {
+      element.addEventListener('click', () => {
+
+        const counter = likeCounters[index];
+        let clickedCounter = parseInt(counter.innerHTML);
+        const currentId = array[index].id;
+
+        /*
+        Bonus 3: Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
+        */
+        if (element.classList.contains("liked"))
+        {
+          element.classList.remove("liked")
+          clickedCounter--;
+
+          likedPost = likedPost.filter( (element) => element != currentId)
+
+        }
+
+        else
+        {
+          element.classList.add("liked")
+
+          clickedCounter++;
+
+          likedPost.push(currentId);
+
+        }
+
+        console.log("likedPost : ", likedPost);
+        counter.innerHTML = clickedCounter;
+      })
+  }
+)
